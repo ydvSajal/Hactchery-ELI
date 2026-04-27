@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ELRA – Entrepreneurial Leadership Readiness Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset & Variables ────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #F7F5F2;
+    --surface:   #FFFFFF;
+    --border:    #E8E4DE;
+    --text:      #1A1714;
+    --muted:     #7A7570;
+    --accent:    #C8622A;
+    --accent-lt: #F5E8DF;
+    --green:     #2E7D55;
+    --yellow:    #A3840A;
+    --red:       #C0392B;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,.06);
+    --shadow-md: 0 4px 20px rgba(0,0,0,.09);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,.12);
+    --radius:    16px;
+    --radius-sm: 10px;
+    --font-head: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+    --transition: .22s ease;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Layout ────────────────────────────────────────────── */
+  .shell {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* ── Header / Hero ─────────────────────────────────────── */
+  .hero {
+    text-align: center;
+    padding: 64px 0 48px;
+    animation: fadeDown .6s ease both;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-lt);
+    border: 1px solid rgba(200,98,42,.18);
+    border-radius: 40px;
+    padding: 5px 16px;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -.01em;
+    margin-bottom: 16px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p {
+    max-width: 480px;
+    margin: 0 auto 0;
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  /* ── Progress Bar ──────────────────────────────────────── */
+  .progress-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247,245,242,.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    margin: 0 -20px;
+    animation: fadeDown .5s .1s ease both;
+  }
+  .progress-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .progress-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    white-space: nowrap;
+    min-width: 80px;
+    letter-spacing: .04em;
+  }
+  .progress-bar-bg {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), #E8813A);
+    border-radius: 99px;
+    transition: width .5s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ── Section Card ──────────────────────────────────────── */
+  .section-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    margin-top: 32px;
+    box-shadow: var(--shadow-sm);
+    animation: fadeUp .5s ease both;
+  }
+  .section-card:nth-child(2) { animation-delay: .05s; }
+  .section-card:nth-child(3) { animation-delay: .10s; }
+  .section-card:nth-child(4) { animation-delay: .15s; }
+  .section-card:nth-child(5) { animation-delay: .20s; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--accent-lt);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: var(--font-head);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+  }
+  .section-subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+    font-weight: 400;
+  }
+
+  /* ── Question Row ──────────────────────────────────────── */
+  .question {
+    margin-bottom: 28px;
+  }
+  .question:last-child { margin-bottom: 0; }
+  .question-text {
+    font-size: .93rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .q-index {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-right: 8px;
+  }
+
+  /* ── Rating Buttons ─────────────────────────────────────── */
+  .rating-group {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .rating-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: .04em;
+  }
+  .rating-btn {
+    flex: 1;
+    aspect-ratio: 1;
+    max-width: 48px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    position: relative;
+  }
+  .rating-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-lt);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(200,98,42,.18);
+  }
+  .rating-btn.selected {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(200,98,42,.3);
+  }
+  .rating-btn.selected:hover { background: #B55522; }
+
+  /* ── Scale legend ──────────────────────────────────────── */
+  .scale-legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    color: var(--muted);
+    margin-top: 8px;
+    font-weight: 400;
+  }
+
+  /* ── Submit Button ─────────────────────────────────────── */
+  .submit-wrap {
+    text-align: center;
+    margin-top: 44px;
+    animation: fadeUp .5s .25s ease both;
+  }
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--text);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 16px 44px;
+    border-radius: 99px;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition);
+    box-shadow: 0 4px 24px rgba(26,23,20,.22);
+    letter-spacing: .02em;
+  }
+  .btn-submit:hover:not(:disabled) {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(200,98,42,.35);
+  }
+  .btn-submit:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn-submit svg { transition: transform var(--transition); }
+  .btn-submit:hover:not(:disabled) svg { transform: translateX(4px); }
+
+  /* ── Results Dashboard ─────────────────────────────────── */
+  #results { display: none; }
+  #results.visible {
+    display: block;
+    animation: fadeUp .6s ease both;
+  }
+
+  .result-hero {
+    text-align: center;
+    padding: 56px 0 40px;
+  }
+  .result-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--green);
+    background: #EAF5EE;
+    border: 1px solid rgba(46,125,85,.18);
+    border-radius: 40px;
+    padding: 5px 16px;
+    margin-bottom: 24px;
+  }
+  .result-score-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .result-score {
+    font-family: var(--font-head);
+    font-size: clamp(4rem, 14vw, 7rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -.03em;
+  }
+  .result-score sub {
+    font-size: 1.8rem;
+    vertical-align: baseline;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .result-category {
+    font-family: var(--font-head);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 12px;
+    letter-spacing: -.01em;
+  }
+  .result-insight {
+    max-width: 460px;
+    margin: 16px auto 0;
+    color: var(--muted);
+    font-size: .95rem;
+    font-weight: 300;
+  }
+
+  /* ── Pillar Grid ───────────────────────────────────────── */
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  @media(max-width:540px){ .results-grid { grid-template-columns: 1fr; } }
+
+  .pillar-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    box-shadow: var(--shadow-sm);
+    animation: fadeUp .5s ease both;
+  }
+  .pillar-name {
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .pillar-score {
+    font-family: var(--font-head);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -.02em;
+  }
+  .pillar-bar-bg {
+    height: 6px;
+    background: var(--border);
+    border-radius: 99px;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+  .pillar-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width .9s cubic-bezier(.4,0,.2,1);
+  }
+  .fill-green  { background: var(--green); }
+  .fill-yellow { background: var(--yellow); }
+  .fill-red    { background: var(--red); }
+
+  .heat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 3px 10px;
+    border-radius: 99px;
+  }
+  .heat-high   { background: #EAF5EE; color: var(--green); }
+  .heat-medium { background: #FBF5E0; color: var(--yellow); }
+  .heat-low    { background: #FAE9E7; color: var(--red); }
+
+  /* ── Heat Map Table ────────────────────────────────────── */
+  .heatmap-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-top: 16px;
+    box-shadow: var(--shadow-sm);
+    animation: fadeUp .5s .1s ease both;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .heatmap-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+  }
+  .heatmap-table td {
+    padding: 10px 14px;
+    font-size: .88rem;
+  }
+  .heatmap-table td:first-child { font-weight: 500; border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+  .heatmap-table td:last-child  { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; text-align: right; }
+  .heatmap-table tr { border-radius: var(--radius-sm); }
+  .row-high   td { background: #F2FAF5; }
+  .row-medium td { background: #FDFAEE; }
+  .row-low    td { background: #FDF3F2; }
+
+  /* ── Archetype Card ────────────────────────────────────── */
+  .archetype-card {
+    background: var(--text);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 32px 36px;
+    margin-top: 16px;
+    box-shadow: var(--shadow-lg);
+    animation: fadeUp .5s .15s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+  .archetype-card::before {
+    content: '';
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(200,98,42,.15);
+  }
+  .archetype-card::after {
+    content: '';
+    position: absolute;
+    right: 30px; bottom: -50px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(200,98,42,.09);
+  }
+  .archetype-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.45);
+    margin-bottom: 10px;
+  }
+  .archetype-name {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: #fff;
+  }
+  .archetype-accent { color: #E8813A; }
+  .archetype-desc {
+    margin-top: 12px;
+    font-size: .93rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.65);
+    line-height: 1.65;
+    max-width: 400px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Retake Button ─────────────────────────────────────── */
+  .retake-wrap {
+    text-align: center;
+    margin-top: 48px;
+    padding-bottom: 20px;
+  }
+  .btn-retake {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: .92rem;
+    font-weight: 500;
+    padding: 12px 28px;
+    border-radius: 99px;
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    transition: all var(--transition);
+    letter-spacing: .02em;
+  }
+  .btn-retake:hover {
+    border-color: var(--text);
+    color: var(--text);
+    background: var(--surface);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ── Divider ───────────────────────────────────────────── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+
+  /* ── Contact form (name/email) ─────────────────────────── */
+  .contact-card { animation-delay: .25s; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media(max-width:540px){ .contact-grid { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .field input {
+    font-family: var(--font-body);
+    font-size: .95rem;
+    color: var(--text);
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    transition: all var(--transition);
+    width: 100%;
+  }
+  .field input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(200,98,42,.12);
+  }
+  .submit-help {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 12px;
+    font-weight: 400;
+  }
+
+  /* ── Heat-map grid (LOW / MEDIUM / HIGH visual) ─────────── */
+  .heatgrid {
+    display: grid;
+    grid-template-columns: 100px repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .heatgrid-head {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    padding: 6px 0;
+  }
+  .heatgrid-row-label {
+    font-size: .9rem;
+    font-weight: 500;
+    align-self: center;
+  }
+  .heatgrid-cell {
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: all var(--transition);
+    opacity: .35;
+  }
+  .heatgrid-cell.active { opacity: 1; box-shadow: var(--shadow-sm); transform: scale(1.02); }
+  .heatgrid-cell.lvl-low    { background: #FAE9E7; color: var(--red); }
+  .heatgrid-cell.lvl-medium { background: #FBF5E0; color: var(--yellow); }
+  .heatgrid-cell.lvl-high   { background: #EAF5EE; color: var(--green); }
+  .heatgrid-cell.active.lvl-low    { background: var(--red);    color: #fff; }
+  .heatgrid-cell.active.lvl-medium { background: var(--yellow); color: #fff; }
+  .heatgrid-cell.active.lvl-high   { background: var(--green);  color: #fff; }
+  .heat-key-insight {
+    margin-top: 22px;
+    padding: 14px 18px;
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: .9rem;
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .heat-key-insight strong {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  /* ── Email status banner ───────────────────────────────── */
+  .email-status {
+    margin: 24px 0 0;
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    font-size: .88rem;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid;
+  }
+  .email-status.ok    { background: #EAF5EE; color: var(--green);  border-color: rgba(46,125,85,.25); }
+  .email-status.warn  { background: #FBF5E0; color: var(--yellow); border-color: rgba(163,132,10,.25); }
+
+  /* ── Animations ────────────────────────────────────────── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: .6; }
+  }
+
+  /* ── Mobile ────────────────────────────────────────────── */
+  @media(max-width:600px){
+    .section-card { padding: 24px 20px; }
+    .rating-btn { font-size: .78rem; max-width: 38px; }
+    .rating-group { gap: 4px; }
+    .archetype-card { padding: 24px 22px; }
+    .heatmap-section { padding: 22px 18px; }
+    .result-score { font-size: 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ── ASSESSMENT ── -->
+  <div id="assessment">
+
+    <div class="hero">
+      <div class="hero-badge">Entrepreneurial Leadership Diagnostics</div>
+      <h1>Are You Ready to Lead<br>Like a <em>Founder?</em></h1>
+      <p>A 16-question diagnostic across the four pillars of entrepreneurial leadership — your EL Readiness Index (ELRI) is sharpest when answers are honest.</p>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-inner">
+        <span class="progress-label" id="progressLabel">0 / 16</span>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <!-- Name + Email capture (also a Netlify Form for build-time detection) -->
+    <form
+      id="contactForm"
+      name="elri-results"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="section-card contact-card"
+      onsubmit="return false;"
+    >
+      <input type="hidden" name="form-name" value="elri-results" />
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div>
+          <div class="section-title">Get your results by email</div>
+          <div class="section-subtitle">A copy will be sent to you and to the program director.</div>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <label class="field">
+          <span class="field-label">Full name</span>
+          <input type="text" name="name" id="contactName" required autocomplete="name" placeholder="Your full name" />
+        </label>
+        <label class="field">
+          <span class="field-label">Email address</span>
+          <input type="email" name="email" id="contactEmail" required autocomplete="email" placeholder="you@example.com" />
+        </label>
+      </div>
+
+      <!-- Hidden fields populated at submit time -->
+      <input type="hidden" name="total" id="hf_total" />
+      <input type="hidden" name="category" id="hf_category" />
+      <input type="hidden" name="insight" id="hf_insight" />
+      <input type="hidden" name="archetype" id="hf_archetype" />
+      <input type="hidden" name="archetype_desc" id="hf_archetype_desc" />
+      <input type="hidden" name="pillar_sensemaking" id="hf_pillar_sensemaking" />
+      <input type="hidden" name="pillar_agency" id="hf_pillar_agency" />
+      <input type="hidden" name="pillar_paradox" id="hf_pillar_paradox" />
+      <input type="hidden" name="pillar_system" id="hf_pillar_system" />
+    </form>
+
+    <div class="submit-wrap">
+      <button class="btn-submit" id="submitBtn" disabled onclick="submitAssessment()">
+        View My Results &amp; Email Them
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+        </svg>
+      </button>
+      <div class="submit-help" id="submitHelp">Answer all 16 questions and add your name &amp; email to continue.</div>
+    </div>
+
+  </div><!-- /assessment -->
+
+  <!-- ── RESULTS ── -->
+  <div id="results">
+
+    <div class="result-hero">
+      <div class="result-badge">Assessment Complete</div>
+      <div class="result-score-label">Total Score</div>
+      <div class="result-score" id="totalScore">—<sub>/112</sub></div>
+      <div class="result-category" id="resultCategory">—</div>
+      <p class="result-insight" id="resultInsight">—</p>
+    </div>
+
+    <div class="results-grid" id="pillarGrid"></div>
+
+    <div class="heatmap-section">
+      <div class="section-label">Diagnostic Heat Map — Interpretive Layer</div>
+      <div class="heatgrid" id="heatgrid"></div>
+      <div class="heat-key-insight">
+        <strong>Key Insight</strong>
+        High EL readiness requires no red zones. One weak pillar creates systemic fragility.
+      </div>
+      <div class="divider"></div>
+      <table class="heatmap-table" id="heatmapTable"></table>
+    </div>
+
+    <div class="archetype-card" id="archetypeCard">
+      <div class="archetype-eyebrow">Leadership Failure Archetypes — Revealed</div>
+      <div class="archetype-name" id="archetypeName">—</div>
+      <p class="archetype-desc" id="archetypeDesc">—</p>
+    </div>
+
+    <div class="email-status" id="emailStatus" style="display:none;"></div>
+
+    <div class="retake-wrap">
+      <button class="btn-retake" onclick="retakeAssessment()">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
+        </svg>
+        Retake Assessment
+      </button>
+    </div>
+
+  </div><!-- /results -->
+
+</div><!-- /shell -->
+
+<script>
+/* ── DATA ──────────────────────────────────────────────────── */
+const SECTIONS = [
+  {
+    id: 'sensemaking',
+    title: 'Sensemaking',
+    subtitle: 'BANI Fitness — perceive reality early and accurately',
+    replaces: 'Replaces planning',
+    redFlags: 'Over-reliance on dashboards · waiting for consensus · confusing emotional reassurance with truth',
+    questions: [
+      'I trust weak signals over formal reports.',
+      'I act before data feels "complete."',
+      'Anxiety in the system increases my clarity, not my hesitation.',
+      'I can name what is ending before others see decline.',
+    ]
+  },
+  {
+    id: 'agency',
+    title: 'Agency & Ownership',
+    subtitle: 'Founder Posture — absorb downside personally',
+    replaces: 'Replaces authority',
+    redFlags: 'Excessive escalation · legal or policy dependency · blame diffusion',
+    questions: [
+      'I am comfortable making decisions that cannot be delegated.',
+      'I do not hide behind process when outcomes are uncertain.',
+      'I feel responsible even when authority is ambiguous.',
+      'I step forward when others hesitate, without being asked.',
+    ]
+  },
+  {
+    id: 'paradox',
+    title: 'Paradox Navigation',
+    subtitle: 'RUPT Mastery — operate in tension without collapse',
+    replaces: 'Replaces alignment',
+    redFlags: 'Forced alignment · premature simplification · over-indexing on harmony',
+    questions: [
+      'I can pursue speed and quality simultaneously.',
+      'I do not need contradictions resolved to move forward.',
+      'I treat disagreement as signal, not friction.',
+      'I am comfortable being misunderstood temporarily.',
+    ]
+  },
+  {
+    id: 'system',
+    title: 'System Creation',
+    subtitle: 'ALIVE Capability — design for emergence',
+    replaces: 'Replaces optimization',
+    redFlags: 'Micromanagement · tool obsession without architecture · linear roadmaps in nonlinear contexts',
+    questions: [
+      'I design environments, not instructions.',
+      'I expect systems to behave unpredictably—and plan for it.',
+      'I think in incentives, feedback loops, and second-order effects.',
+      'I build platforms others can adapt without me.',
+    ]
+  }
+];
+
+const CATEGORIES = [
+  { min: 0,   max: 39,  label: 'Legacy Leader',         insight: 'High collapse risk. Your strengths are rooted in stability and structure — entrepreneurial conditions will demand a sharper tolerance for uncertainty and distributed ownership.' },
+  { min: 40,  max: 69,  label: 'Transitional Leader',   insight: 'You operate effectively in defined contexts and are beginning to develop the adaptive instincts that founder-grade environments demand.' },
+  { min: 70,  max: 89,  label: 'Entrepreneurial Leader',insight: 'You consistently demonstrate founder-grade thinking: reading environments before others, owning outcomes, and designing for scale.' },
+  { min: 90,  max: 112, label: 'Founder of Futures',    insight: 'You operate at the frontier — synthesising ambiguity into direction, building self-organising systems, and sustaining paradox as a creative tool.' },
+];
+
+const ARCHETYPES = [
+  {
+    id: 'optimizer',
+    label: 'The Optimizer',
+    condition: s => s.system >= 22 && s.agency <= 13,
+    desc: 'High System, low Agency. You engineer brilliant systems but may hesitate to drive them forward yourself. Your superpower is scale; the growth edge is bold personal initiative.'
+  },
+  {
+    id: 'visionary',
+    label: 'The Visionary',
+    condition: s => s.sensemaking >= 22 && s.agency <= 13,
+    desc: 'High Sense, low Execution. You see what others miss, but translating vision into decisive action is the gap. Your ideas are your leverage — now claim the stage.'
+  },
+  {
+    id: 'hero',
+    label: 'The Hero',
+    condition: s => s.agency >= 22 && s.system <= 13,
+    desc: 'High Agency, low Systems. You run towards fires and get things done — but growth means building systems so not every fire needs you. The shift from doer to architect is your next chapter.'
+  },
+  {
+    id: 'therapist',
+    label: 'The Therapist',
+    condition: s => s.paradox <= 13,
+    desc: 'High Empathy, low Paradox. You\'re strongest in relationships and clarity, but tensions and contradictions stall your momentum. Embracing paradox as fuel — not friction — is your edge.'
+  },
+  {
+    id: 'founder',
+    label: 'The Founder',
+    condition: () => true,   // fallback
+    desc: 'Balanced strength across all four pillars — the rare combination of sensing, owning, navigating contradiction, and building for the long game. High EL readiness requires no red zones; you have none.'
+  },
+];
+
+/* ── STATE ─────────────────────────────────────────────────── */
+const answers = {}; // key: "section_q" → value: 1–7
+
+/* ── BUILD QUESTIONS ───────────────────────────────────────── */
+function buildQuestions() {
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = '';
+  let globalIndex = 1;
+
+  SECTIONS.forEach((section, si) => {
+    const card = document.createElement('div');
+    card.className = 'section-card';
+    card.style.animationDelay = `${si * 0.07}s`;
+
+    card.innerHTML = `
+      <div class="section-header">
+        <div class="section-num">${si + 1}</div>
+        <div>
+          <div class="section-title">${section.title}</div>
+          <div class="section-subtitle">${section.subtitle}</div>
+        </div>
+      </div>
+    `;
+
+    section.questions.forEach((qText, qi) => {
+      const key = `${section.id}_${qi}`;
+      const qDiv = document.createElement('div');
+      qDiv.className = 'question';
+      qDiv.innerHTML = `
+        <div class="question-text"><span class="q-index">Q${globalIndex}</span>${qText}</div>
+        <div class="rating-labels"><span>Strongly Disagree</span><span>Strongly Agree</span></div>
+        <div class="rating-group" id="rg_${key}">
+          ${[1,2,3,4,5,6,7].map(v => `
+            <button class="rating-btn" data-key="${key}" data-val="${v}" onclick="selectRating(this)" title="${v}">${v}</button>
+          `).join('')}
+        </div>
+      `;
+      card.appendChild(qDiv);
+      globalIndex++;
+    });
+
+    container.appendChild(card);
+  });
+}
+
+/* ── SELECT RATING ─────────────────────────────────────────── */
+function selectRating(btn) {
+  const key = btn.dataset.key;
+  const val = parseInt(btn.dataset.val);
+  answers[key] = val;
+
+  // Update button states
+  document.querySelectorAll(`[data-key="${key}"]`).forEach(b => {
+    b.classList.toggle('selected', parseInt(b.dataset.val) === val);
+  });
+
+  updateProgress();
+}
+
+/* ── PROGRESS ──────────────────────────────────────────────── */
+function isContactValid() {
+  const name = document.getElementById('contactName')?.value.trim() || '';
+  const email = document.getElementById('contactEmail')?.value.trim() || '';
+  return name.length > 0 && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+}
+
+function updateProgress() {
+  const total = 16;
+  const done  = Object.keys(answers).length;
+  document.getElementById('progressLabel').textContent = `${done} / ${total}`;
+  document.getElementById('progressFill').style.width  = `${(done / total) * 100}%`;
+  const ready = done >= total && isContactValid();
+  document.getElementById('submitBtn').disabled = !ready;
+  const help = document.getElementById('submitHelp');
+  if (help) {
+    if (done < total) help.textContent = `Answer all 16 questions and add your name & email to continue. (${done}/${total} answered)`;
+    else if (!isContactValid()) help.textContent = 'Add your name and email — your results will be sent there and to the program director.';
+    else help.textContent = 'Ready. Your results will be emailed to you and to the program director.';
+  }
+}
+
+/* ── SCORING ───────────────────────────────────────────────── */
+function computeScores() {
+  const scores = {};
+  SECTIONS.forEach(section => {
+    scores[section.id] = section.questions.reduce((sum, _, qi) => {
+      return sum + (answers[`${section.id}_${qi}`] || 0);
+    }, 0);
+  });
+  scores.total = Object.values(scores).reduce((a, b) => a + b, 0);
+  return scores;
+}
+
+function getHeat(score) {
+  if (score >= 22) return { label: '🟢 High',   cls: 'heat-high',   bar: 'fill-green',  row: 'row-high' };
+  if (score >= 14) return { label: '🟡 Medium', cls: 'heat-medium', bar: 'fill-yellow', row: 'row-medium' };
+  return             { label: '🔴 Low',   cls: 'heat-low',    bar: 'fill-red',    row: 'row-low' };
+}
+
+function getCategory(total) {
+  return CATEGORIES.find(c => total >= c.min && total <= c.max) || CATEGORIES[0];
+}
+
+function getArchetype(scores) {
+  return ARCHETYPES.find(a => a.condition(scores)) || ARCHETYPES[ARCHETYPES.length - 1];
+}
+
+/* ── SUBMIT ────────────────────────────────────────────────── */
+async function submitAssessment() {
+  const scores   = computeScores();
+  const category = getCategory(scores.total);
+  const archetype= getArchetype(scores);
+
+  // Total score
+  document.getElementById('totalScore').innerHTML = `${scores.total}<sub>/112</sub>`;
+  document.getElementById('resultCategory').textContent = category.label;
+  document.getElementById('resultInsight').textContent   = category.insight;
+
+  // Pillar cards
+  const grid = document.getElementById('pillarGrid');
+  grid.innerHTML = '';
+  SECTIONS.forEach((section, i) => {
+    const score = scores[section.id];
+    const heat  = getHeat(score);
+    const pct   = (score / 28) * 100;
+    const card  = document.createElement('div');
+    card.className = 'pillar-card';
+    card.style.animationDelay = `${i * 0.08}s`;
+    card.innerHTML = `
+      <div class="pillar-name">${section.title}</div>
+      <div class="pillar-score">${score}<span style="font-size:1rem;color:var(--muted);font-weight:400">/28</span></div>
+      <div class="pillar-bar-bg">
+        <div class="pillar-bar-fill ${heat.bar}" style="width:0%" data-pct="${pct}"></div>
+      </div>
+      <div class="heat-pill ${heat.cls}">${heat.label}</div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Heatmap visual grid (LOW / MEDIUM / HIGH)
+  const heatgrid = document.getElementById('heatgrid');
+  heatgrid.innerHTML = `
+    <div></div>
+    <div class="heatgrid-head">Low</div>
+    <div class="heatgrid-head">Medium</div>
+    <div class="heatgrid-head">High</div>
+  `;
+  const ROW_NAMES = { sensemaking: 'Sense', agency: 'Agency', paradox: 'Paradox', system: 'System' };
+  SECTIONS.forEach(section => {
+    const score = scores[section.id];
+    const level = score >= 22 ? 'high' : score >= 14 ? 'medium' : 'low';
+    const rowLabel = document.createElement('div');
+    rowLabel.className = 'heatgrid-row-label';
+    rowLabel.textContent = ROW_NAMES[section.id] || section.title;
+    heatgrid.appendChild(rowLabel);
+    ['low','medium','high'].forEach(lvl => {
+      const cell = document.createElement('div');
+      const isActive = lvl === level;
+      cell.className = `heatgrid-cell lvl-${lvl}` + (isActive ? ' active' : '');
+      cell.textContent = isActive ? (lvl === 'high' ? '🟢' : lvl === 'medium' ? '🟨' : '🟥') : '';
+      heatgrid.appendChild(cell);
+    });
+  });
+
+  // Heatmap table (kept as detail view)
+  const tbody = document.getElementById('heatmapTable');
+  tbody.innerHTML = '';
+  SECTIONS.forEach(section => {
+    const score = scores[section.id];
+    const heat  = getHeat(score);
+    const tr = document.createElement('tr');
+    tr.className = heat.row;
+    tr.innerHTML = `
+      <td>${section.title}</td>
+      <td>${score} / 28</td>
+      <td><span class="heat-pill ${heat.cls}">${heat.label}</span></td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Archetype
+  document.getElementById('archetypeName').innerHTML = `The <span class="archetype-accent">${archetype.label.replace('The ', '')}</span>`;
+  document.getElementById('archetypeDesc').textContent = archetype.desc;
+
+  // Show results, hide form
+  document.getElementById('assessment').style.display = 'none';
+  const resultsEl = document.getElementById('results');
+  resultsEl.classList.add('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Animate bars after brief delay
+  setTimeout(() => {
+    document.querySelectorAll('.pillar-bar-fill[data-pct]').forEach(el => {
+      el.style.width = el.dataset.pct + '%';
+    });
+  }, 200);
+
+  // Submit to Netlify Forms (sends emails via submission-created function)
+  await sendResultsByEmail(scores, category, archetype);
+}
+
+async function sendResultsByEmail(scores, category, archetype) {
+  const statusEl = document.getElementById('emailStatus');
+  // Populate hidden fields
+  document.getElementById('hf_total').value         = String(scores.total);
+  document.getElementById('hf_category').value      = category.label;
+  document.getElementById('hf_insight').value       = category.insight;
+  document.getElementById('hf_archetype').value     = archetype.label;
+  document.getElementById('hf_archetype_desc').value= archetype.desc;
+  document.getElementById('hf_pillar_sensemaking').value = String(scores.sensemaking);
+  document.getElementById('hf_pillar_agency').value      = String(scores.agency);
+  document.getElementById('hf_pillar_paradox').value     = String(scores.paradox);
+  document.getElementById('hf_pillar_system').value      = String(scores.system);
+
+  const form = document.getElementById('contactForm');
+  const formData = new FormData(form);
+  const userEmail = formData.get('email') || '';
+
+  try {
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    });
+    if (res.ok) {
+      statusEl.className = 'email-status ok';
+      statusEl.textContent = `A copy of your results has been sent to ${userEmail} and to the program director.`;
+    } else {
+      statusEl.className = 'email-status warn';
+      statusEl.textContent = 'Your results are saved, but the email delivery could not be confirmed. Please screenshot this page if needed.';
+    }
+  } catch (err) {
+    statusEl.className = 'email-status warn';
+    statusEl.textContent = 'Your results are saved, but the email delivery could not be confirmed. Please screenshot this page if needed.';
+  }
+  statusEl.style.display = 'block';
+}
+
+/* ── RETAKE ────────────────────────────────────────────────── */
+function retakeAssessment() {
+  // Clear answers
+  Object.keys(answers).forEach(k => delete answers[k]);
+
+  // Reset UI
+  document.getElementById('results').classList.remove('visible');
+  document.getElementById('results').style.display = '';
+  document.getElementById('assessment').style.display = '';
+  const statusEl = document.getElementById('emailStatus');
+  if (statusEl) { statusEl.style.display = 'none'; statusEl.textContent = ''; }
+  document.getElementById('contactForm').reset();
+
+  buildQuestions();
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── INIT ──────────────────────────────────────────────────── */
+buildQuestions();
+updateProgress();
+['contactName','contactEmail'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', updateProgress);
+});
+</script>
+</body>
+</html>
