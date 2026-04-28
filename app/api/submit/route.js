@@ -32,13 +32,13 @@ export async function POST(req) {
     });
 
     const mailOptions = {
-      from: `"ELRA Assessment" <${process.env.SMTP_FROM}>`,
+      from: `"ELRI Assessment" <${process.env.SMTP_FROM}>`,
       to: `${email}, sidharth.tripathy@bennett.edu.in, tripathisanjeev323@gmail.com`,
-      subject: `Your ELRA Results: ${archetype}`,
+      subject: `Your ELRI Results: ${archetype}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #1A1714; border: 1px solid #E8E4DE; border-radius: 16px; overflow: hidden;">
           <div style="background: #C8622A; padding: 30px; text-align: center;">
-            <h1 style="color: #FFFFFF; margin: 0; font-size: 24px;">Assessment Complete</h1>
+            <h1 style="color: #FFFFFF; margin: 0; font-size: 24px;">ELRI Assessment Complete</h1>
           </div>
           <div style="padding: 30px;">
             <h2 style="color: #1A1714;">Hi ${name},</h2>

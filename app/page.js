@@ -174,7 +174,7 @@ export default function AssessmentPage() {
       <div className="shell">
         <div id="results" className="visible">
           <div className="result-hero">
-            <div className="result-badge">Assessment Complete</div>
+            <div className="result-badge">Here's your 'Entrepreneurial Leadership Readiness Assessment'</div>
             <div className="result-score-label">Total Score</div>
             <div className="result-score">{scores.total}<sub>/112</sub></div>
             <div className="result-category">{category.label}</div>
@@ -228,10 +228,12 @@ export default function AssessmentPage() {
           </div>
 
           <div className="archetype-card">
-            <div className="archetype-eyebrow">Leadership Failure Archetypes — Revealed</div>
+            <div className="archetype-eyebrow">Your Result: Leadership Failure Archetype</div>
             <div className="archetype-name">The <span className="archetype-accent">{archetype.label.replace('The ', '')}</span></div>
             <p className="archetype-desc">{archetype.desc}</p>
           </div>
+
+
 
           {emailStatus && (
             <div className={`email-status ${emailStatus.ok ? 'ok' : 'warn'}`}>
@@ -257,6 +259,8 @@ export default function AssessmentPage() {
           <h1>Are You Ready to Lead<br />Like a <em>Founder?</em></h1>
           <p>A 16-question diagnostic across the four pillars of entrepreneurial leadership.</p>
         </div>
+
+
 
         <div className="progress-wrap">
           <div className="progress-inner">

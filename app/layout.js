@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "ELRA – Entrepreneurial Leadership Readiness Assessment",
+  title: "ELRI – Entrepreneurial Leadership Readiness Assessment",
   description: "A 16-question diagnostic across the four pillars of entrepreneurial leadership.",
 };
 
