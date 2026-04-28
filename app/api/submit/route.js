@@ -71,7 +71,36 @@ export async function POST(req) {
           </div>
           <div style="padding: 30px;">
             <h2 style="color: #1A1714;">Hi ${name},</h2>
-            <p style="font-size: 16px; line-height: 1.6; color: #7A7570;">Thank you for completing the Entrepreneurial Leadership Readiness Assessment. Here is a summary of your results:</p>
+            <p style="font-size: 16px; line-height: 1.6; color: #7A7570; margin-bottom: 24px;">Thank you for completing the Entrepreneurial Leadership Readiness Assessment. Here is a summary of your results:</p>
+
+            <div style="margin-bottom: 32px; border-bottom: 2px solid #F7F5F2; padding-bottom: 32px;">
+              <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #C8622A; margin-bottom: 12px;">Diagnostic Framework</div>
+              <h3 style="font-size: 18px; font-weight: 700; margin: 0 0 16px 0; color: #1A1714;">Entrepreneurial Leadership Readiness Diagnostic (ELRD)</h3>
+              <p style="font-size: 14px; color: #7A7570; line-height: 1.6; margin-bottom: 24px;">
+                This diagnostic measures cognitive load capacity under uncertainty. It assesses: 
+                How leaders sense reality, how they decide without closure, how they absorb risk, and how they shape systems.
+              </p>
+              
+              <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #C8622A; margin-bottom: 12px;">Scoring Model: EL Readiness Index (ELRI)</div>
+              <p style="font-size: 14px; color: #7A7570; margin-bottom: 16px;">Each pillar scored 0&ndash;28 and Total Score: 0&ndash;112</p>
+              
+              <div style="background: #FFFFFF; border: 1px solid #E8E4DE; border-radius: 8px; overflow: hidden;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                  <thead>
+                    <tr style="background: #F7F5F2;">
+                      <th style="padding: 10px 14px; text-align: left; font-weight: 600; color: #7A7570; text-transform: uppercase; font-size: 10px; border-bottom: 1px solid #E8E4DE;">ELRI Score</th>
+                      <th style="padding: 10px 14px; text-align: left; font-weight: 600; color: #7A7570; text-transform: uppercase; font-size: 10px; border-bottom: 1px solid #E8E4DE;">Leadership Reality</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #E8E4DE; font-weight: 600; color: #C8622A;">0&ndash;39</td><td style="padding: 10px 14px; border-bottom: 1px solid #E8E4DE; color: #7A7570;">Legacy Leader (High Collapse Risk)</td></tr>
+                    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #E8E4DE; font-weight: 600; color: #C8622A;">40&ndash;69</td><td style="padding: 10px 14px; border-bottom: 1px solid #E8E4DE; color: #7A7570;">Transitional Leader</td></tr>
+                    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #E8E4DE; font-weight: 600; color: #C8622A;">70&ndash;89</td><td style="padding: 10px 14px; border-bottom: 1px solid #E8E4DE; color: #7A7570;">Entrepreneurial Leader</td></tr>
+                    <tr><td style="padding: 10px 14px; font-weight: 600; color: #C8622A;">90&ndash;112</td><td style="padding: 10px 14px; color: #7A7570;">Founder of Futures</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
             
             <div style="background: #F7F5F2; padding: 24px; border-radius: 12px; margin: 24px 0; text-align: center;">
               <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #7A7570; margin-bottom: 8px;">Total Score</div>
@@ -128,13 +157,7 @@ export async function POST(req) {
               <p style="font-size: 14px; color: #7A7570; margin: 0; line-height: 1.5;"><strong>Key Insight:</strong> High EL readiness requires no red zones. One weak pillar creates systemic fragility.</p>
             </div>
 
-            <h3 style="font-size: 16px; color: #1A1714; margin-bottom: 16px; border-bottom: 1px solid #E8E4DE; padding-bottom: 8px;">Scoring Model: EL Readiness Index (ELRI)</h3>
-            <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 24px; color: #7A7570;">
-              <tr><td style="padding: 4px 0; font-weight: bold; width: 60px; color: #C8622A;">0&ndash;39</td><td style="padding: 4px 0;">Legacy Leader (High Collapse Risk)</td></tr>
-              <tr><td style="padding: 4px 0; font-weight: bold; color: #C8622A;">40&ndash;69</td><td style="padding: 4px 0;">Transitional Leader</td></tr>
-              <tr><td style="padding: 4px 0; font-weight: bold; color: #C8622A;">70&ndash;89</td><td style="padding: 4px 0;">Entrepreneurial Leader</td></tr>
-              <tr><td style="padding: 4px 0; font-weight: bold; color: #C8622A;">90&ndash;112</td><td style="padding: 4px 0;">Founder of Futures</td></tr>
-            </table>
+
 
             <h3 style="font-size: 16px; color: #1A1714; margin-bottom: 16px; border-bottom: 1px solid #E8E4DE; padding-bottom: 8px;">Leadership Failure Archetypes</h3>
             <ul style="font-size: 14px; color: #7A7570; padding-left: 20px; margin-bottom: 24px; line-height: 1.6;">
