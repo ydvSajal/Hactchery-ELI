@@ -31,6 +31,35 @@ export async function POST(req) {
       },
     });
 
+    const heatMapHtml = [
+      { label: 'Sensemaking', score: scores.sensemaking },
+      { label: 'Agency',      score: scores.agency },
+      { label: 'Paradox',     score: scores.paradox },
+      { label: 'System',      score: scores.system }
+    ].map(row => {
+      const level = row.score >= 22 ? 'high' : row.score >= 14 ? 'medium' : 'low';
+      const cells = ['low', 'medium', 'high'].map(cellLvl => {
+        const isActive = level === cellLvl;
+        const color = cellLvl === 'high' ? '#2E7D55' : cellLvl === 'medium' ? '#A3840A' : '#C0392B';
+        const bgColor = cellLvl === 'high' ? '#EAF5EE' : cellLvl === 'medium' ? '#FBF5E0' : '#FAE9E7';
+        const emoji = cellLvl === 'high' ? '🟢' : cellLvl === 'medium' ? '🟨' : '🟥';
+        
+        return `
+          <td style="width: 21%; text-align: center; background: ${isActive ? color : bgColor}; padding: 10px; border-radius: 4px; font-size: 16px; border: 1px solid ${isActive ? color : '#E8E4DE'};">
+            ${isActive ? emoji : ''}
+          </td>
+        `;
+      }).join('<td style="width: 2%"></td>');
+      
+      return `
+        <tr>
+          <td style="padding: 10px 0; font-size: 14px; color: #1A1714; font-weight: 500;">${row.label}</td>
+          ${cells}
+        </tr>
+        <tr><td colspan="6" style="height: 6px"></td></tr>
+      `;
+    }).join('');
+
     const mailOptions = {
       from: `"ELRI Assessment" <${process.env.SMTP_FROM}>`,
       to: `${email}, sidharth.tripathy@bennett.edu.in, tripathisanjeev323@gmail.com`,
@@ -78,7 +107,24 @@ export async function POST(req) {
             </table>
 
             <div style="background: #F7F5F2; padding: 16px; border-radius: 8px; margin-top: 24px; margin-bottom: 24px;">
-              <div style="font-size: 12px; font-weight: bold; color: #1A1714; margin-bottom: 8px;">Diagnostic Heat Map &mdash; Interpretive Layer</div>
+              <div style="font-size: 12px; font-weight: bold; color: #1A1714; margin-bottom: 12px;">Diagnostic Heat Map &mdash; Interpretive Layer</div>
+              
+              <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+                <thead>
+                  <tr>
+                    <th style="width: 30%"></th>
+                    <th style="font-size: 9px; color: #7A7570; text-transform: uppercase; padding: 4px;">Low</th>
+                    <th style="width: 2%"></th>
+                    <th style="font-size: 9px; color: #7A7570; text-transform: uppercase; padding: 4px;">Med</th>
+                    <th style="width: 2%"></th>
+                    <th style="font-size: 9px; color: #7A7570; text-transform: uppercase; padding: 4px;">High</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${heatMapHtml}
+                </tbody>
+              </table>
+
               <p style="font-size: 14px; color: #7A7570; margin: 0; line-height: 1.5;"><strong>Key Insight:</strong> High EL readiness requires no red zones. One weak pillar creates systemic fragility.</p>
             </div>
 
