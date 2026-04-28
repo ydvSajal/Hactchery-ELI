@@ -215,6 +215,8 @@ export default function AssessmentPage() {
             <p className="result-insight">{category.insight}</p>
           </div>
 
+          <FrameworkInfo />
+
           <div className="results-grid">
             {SECTIONS.map((section, i) => {
               const score = scores[section.id];
@@ -280,8 +282,6 @@ export default function AssessmentPage() {
               Retake Assessment
             </button>
           </div>
-
-          <FrameworkInfo />
         </div>
       </div>
     );
@@ -296,7 +296,7 @@ export default function AssessmentPage() {
           <p>A 16-question diagnostic across the four pillars of entrepreneurial leadership.</p>
         </div>
 
-
+        <FrameworkInfo />
 
         <div className="progress-wrap">
           <div className="progress-inner">
@@ -381,8 +381,6 @@ export default function AssessmentPage() {
             {!isReady ? 'Please answer all questions and provide contact details.' : 'Ready to submit!'}
           </div>
         </div>
-        
-        <FrameworkInfo />
       </div>
     </div>
   );
