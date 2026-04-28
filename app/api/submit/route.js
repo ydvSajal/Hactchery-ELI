@@ -77,6 +77,28 @@ export async function POST(req) {
               </tr>
             </table>
 
+            <div style="background: #F7F5F2; padding: 16px; border-radius: 8px; margin-top: 24px; margin-bottom: 24px;">
+              <div style="font-size: 12px; font-weight: bold; color: #1A1714; margin-bottom: 8px;">Diagnostic Heat Map &mdash; Interpretive Layer</div>
+              <p style="font-size: 14px; color: #7A7570; margin: 0; line-height: 1.5;"><strong>Key Insight:</strong> High EL readiness requires no red zones. One weak pillar creates systemic fragility.</p>
+            </div>
+
+            <h3 style="font-size: 16px; color: #1A1714; margin-bottom: 16px; border-bottom: 1px solid #E8E4DE; padding-bottom: 8px;">Scoring Model: EL Readiness Index (ELRI)</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 24px; color: #7A7570;">
+              <tr><td style="padding: 4px 0; font-weight: bold; width: 60px; color: #C8622A;">0&ndash;39</td><td style="padding: 4px 0;">Legacy Leader (High Collapse Risk)</td></tr>
+              <tr><td style="padding: 4px 0; font-weight: bold; color: #C8622A;">40&ndash;69</td><td style="padding: 4px 0;">Transitional Leader</td></tr>
+              <tr><td style="padding: 4px 0; font-weight: bold; color: #C8622A;">70&ndash;89</td><td style="padding: 4px 0;">Entrepreneurial Leader</td></tr>
+              <tr><td style="padding: 4px 0; font-weight: bold; color: #C8622A;">90&ndash;112</td><td style="padding: 4px 0;">Founder of Futures</td></tr>
+            </table>
+
+            <h3 style="font-size: 16px; color: #1A1714; margin-bottom: 16px; border-bottom: 1px solid #E8E4DE; padding-bottom: 8px;">Leadership Failure Archetypes</h3>
+            <ul style="font-size: 14px; color: #7A7570; padding-left: 20px; margin-bottom: 24px; line-height: 1.6;">
+              <li><strong style="color:#C8622A">The Optimizer:</strong> High System / Low Agency</li>
+              <li><strong style="color:#C8622A">The Visionary:</strong> High Sense / Low Execution</li>
+              <li><strong style="color:#C8622A">The Hero:</strong> High Agency / Low Systems</li>
+              <li><strong style="color:#C8622A">The Therapist:</strong> High Empathy / Low Paradox</li>
+              <li><strong style="color:#C8622A">The Founder:</strong> High across all four</li>
+            </ul>
+
             <p style="margin-top: 40px; font-size: 12px; color: #7A7570; text-align: center; border-top: 1px solid #E8E4DE; padding-top: 20px;">
               This diagnostic is designed to help you identify your strengths and growth edges in entrepreneurial leadership.
             </p>
