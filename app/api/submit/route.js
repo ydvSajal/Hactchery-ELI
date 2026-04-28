@@ -136,7 +136,7 @@ export async function POST(req) {
             </table>
 
             <div style="background: #F7F5F2; padding: 16px; border-radius: 8px; margin-top: 24px; margin-bottom: 24px;">
-              <div style="font-size: 12px; font-weight: bold; color: #1A1714; margin-bottom: 12px;">Diagnostic Heat Map &mdash; Interpretive Layer</div>
+              <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #C8622A; margin-bottom: 12px;">Diagnostic Heat Map (Interpretive Layer)</div>
               
               <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
                 <thead>
@@ -154,12 +154,16 @@ export async function POST(req) {
                 </tbody>
               </table>
 
-              <p style="font-size: 14px; color: #7A7570; margin: 0; line-height: 1.5;"><strong>Key Insight:</strong> High EL readiness requires no red zones. One weak pillar creates systemic fragility.</p>
+              <p style="font-size: 14px; color: #7A7570; margin: 0; line-height: 1.5;">
+                <strong>Key Insight:</strong><br/>
+                High EL readiness requires no red zones.<br/>
+                One weak pillar creates systemic fragility.
+              </p>
             </div>
 
 
 
-            <h3 style="font-size: 16px; color: #1A1714; margin-bottom: 16px; border-bottom: 1px solid #E8E4DE; padding-bottom: 8px;">Leadership Failure Archetypes</h3>
+            <h3 style="font-size: 16px; color: #1A1714; margin-bottom: 16px; border-bottom: 1px solid #E8E4DE; padding-bottom: 8px;">Leadership Failure Archetypes the Tool Reveals</h3>
             <ul style="font-size: 14px; color: #7A7570; padding-left: 20px; margin-bottom: 24px; line-height: 1.6;">
               <li><strong style="color:#C8622A">The Optimizer:</strong> High System / Low Agency</li>
               <li><strong style="color:#C8622A">The Visionary:</strong> High Sense / Low Execution</li>

@@ -119,6 +119,15 @@ const FrameworkInfo = () => (
           </tbody>
         </table>
       </div>
+
+      <div className="framework-eyebrow" style={{ marginTop: '24px' }}>Leadership Failure Archetypes the Tool Reveals</div>
+      <div className="archetypes-list" style={{ marginTop: '16px' }}>
+         <div className="arch-item"><strong>The Optimizer:</strong> High System / Low Agency</div>
+         <div className="arch-item"><strong>The Visionary:</strong> High Sense / Low Execution</div>
+         <div className="arch-item"><strong>The Hero:</strong> High Agency / Low Systems</div>
+         <div className="arch-item"><strong>The Therapist:</strong> High Empathy / Low Paradox</div>
+         <div className="arch-item"><strong>The Founder:</strong> High across all four</div>
+      </div>
     </div>
   </div>
 );
