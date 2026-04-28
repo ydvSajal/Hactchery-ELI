@@ -305,8 +305,6 @@ export default function AssessmentPage() {
           <p>A 16-question diagnostic across the four pillars of entrepreneurial leadership.</p>
         </div>
 
-        <FrameworkInfo />
-
         <div className="progress-wrap">
           <div className="progress-inner">
             <span className="progress-label">{answeredCount} / {totalQuestions}</span>
