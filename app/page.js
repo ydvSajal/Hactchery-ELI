@@ -89,6 +89,40 @@ const ARCHETYPES = [
   },
 ];
 
+const FrameworkInfo = () => (
+  <div className="framework-info">
+    <div className="divider"></div>
+    <div className="framework-content">
+      <div className="framework-eyebrow">Diagnostic Framework</div>
+      <h3 className="framework-title">Entrepreneurial Leadership Readiness Diagnostic (ELRD)</h3>
+      <p className="framework-desc">
+        This diagnostic measures cognitive load capacity under uncertainty. It assesses: 
+        How leaders sense reality, how they decide without closure, how they absorb risk, and how they shape systems.
+      </p>
+      
+      <div className="framework-eyebrow" style={{ marginTop: '24px' }}>Scoring Model: EL Readiness Index (ELRI)</div>
+      <p className="framework-desc">Each pillar scored 0–28 and Total Score: 0–112</p>
+      
+      <div className="elri-table-wrap">
+        <table className="elri-table">
+          <thead>
+            <tr>
+              <th>ELRI Score</th>
+              <th>Leadership Reality</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0–39</td><td>Legacy Leader (High Collapse Risk)</td></tr>
+            <tr><td>40–69</td><td>Transitional Leader</td></tr>
+            <tr><td>70–89</td><td>Entrepreneurial Leader</td></tr>
+            <tr><td>90–112</td><td>Founder of Futures</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+);
+
 export default function AssessmentPage() {
   const [answers, setAnswers] = useState({});
   const [contact, setContact] = useState({ name: '', email: '' });
@@ -246,6 +280,8 @@ export default function AssessmentPage() {
               Retake Assessment
             </button>
           </div>
+
+          <FrameworkInfo />
         </div>
       </div>
     );
@@ -345,6 +381,8 @@ export default function AssessmentPage() {
             {!isReady ? 'Please answer all questions and provide contact details.' : 'Ready to submit!'}
           </div>
         </div>
+        
+        <FrameworkInfo />
       </div>
     </div>
   );
